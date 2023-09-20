@@ -1,0 +1,89 @@
+.headers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background: #201a30;
+}
+
+.headers > .logo {
+  font-size: 2rem;
+  cursor: pointer;
+  transition: filter 100ms;
+  will-change: filter;
+  padding-left: 20px;
+  height: 100%;
+  color: #c2b100;
+  text-shadow: #000 2px 2px 0.2rem;
+  margin: 15px;
+}
+
+.headers > .logo:hover {
+  filter: drop-shadow(0 0 2em #a6a6a6);
+  color: #ecd800;
+}
+
+.headers > .time {
+  color: #ecd800;
+  margin: auto;
+}
+
+.headers > .dropdowns {
+  margin: 22px 0;
+  width: 100px;
+  border-radius: 4px;
+  border: 1px solid #c2b100;
+}
+
+.headers > .dropdowns > button {
+  background: border-box;
+  border: none;
+  color: #c2b100;
+  padding-left: 24px;
+}
+
+.headers > .dropdowns > button:active {
+  background: border-box;
+}
+
+.headers > .dropdowns > div {
+  border: 1px solid #c2b100;
+  background: #201a30;
+  max-width: 100px;
+  padding-left: 20px;
+}
+
+.headers > .dropdowns > div > a {
+  text-decoration: none;
+  color: #ecd800;
+}
+
+.headers > i:hover {
+  color: #ecd800;
+}
+
+.headers > i {
+  padding-right: 10px;
+  font-size: 2.3em;
+  margin: 11px;
+  color: #c2b100;
+  cursor: pointer;
+}
+
+/* Sidenav */
+
+.sidebar {
+  height: 100vh;
+  background-color: #201a30;
+  padding-top: 20px;
+}
+
+.sidebar a {
+  padding: 15px 10px 6px 25px;
+  text-decoration: none;
+  color: #c2b100;
+  display: block;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
