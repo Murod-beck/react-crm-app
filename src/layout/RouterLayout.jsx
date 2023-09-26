@@ -8,8 +8,12 @@ function RouterLayout() {
     <>
       <Header />
       <div className="row">
-        <Sidebar />
-        <Outlet />
+        <div className="col-md-2">
+          <Sidebar />
+        </div>
+        <div className="col-md-10 text-white">
+          <Outlet />
+        </div>
       </div>
       <Footer />
     </>

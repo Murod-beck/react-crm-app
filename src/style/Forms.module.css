@@ -1,5 +1,5 @@
 .forms {
-  border: 1px solid rgb(185, 185, 185);
+  border: 1px solid azure;
   border-radius: 5px;
   background: #313749;
   padding: 20px;
@@ -24,6 +24,7 @@
 .forms > button:hover {
   border: 1px solid #ecd800;
   color: #ecd800;
+  background-color: #222735;
 }
 
 .forms > button > i {

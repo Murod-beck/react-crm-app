@@ -12,7 +12,7 @@
   will-change: filter;
   padding-left: 20px;
   height: 100%;
-  color: #c2b100;
+  color: #ecd800;
   text-shadow: #000 2px 2px 0.2rem;
   margin: 15px;
 }
@@ -37,7 +37,7 @@
 .headers > .dropdowns > button {
   background: border-box;
   border: none;
-  color: #c2b100;
+  color: #ecd800;
   padding-left: 24px;
 }
 
@@ -57,15 +57,19 @@
   color: #ecd800;
 }
 
-.headers > i:hover {
+.headers > a {
+  padding: 10px;
+}
+
+.headers > a > i:hover {
   color: #ecd800;
 }
 
-.headers > i {
+.headers > a > i {
   padding-right: 10px;
   font-size: 2.3em;
   margin: 11px;
-  color: #c2b100;
+  color: #ecd800;
   cursor: pointer;
 }
 
@@ -80,7 +84,7 @@
 .sidebar a {
   padding: 15px 10px 6px 25px;
   text-decoration: none;
-  color: #c2b100;
+  color: #ecd800;
   display: block;
 }
 

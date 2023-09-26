@@ -1,14 +1,15 @@
+import { Link } from "react-router-dom";
 import style from "../style/Header.module.css";
 
 function Sidebar() {
   return (
-    <div className="col-md-2 sm-3">
-      <div className={style.sidebar}>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#clients">Clients</a>
-        <a href="#contact">Contact</a>
-      </div>
+    <div className={style.sidebar}>
+      <Link to="/">Hisob</Link>
+      <Link to="/catigoris">Categoris</Link>
+      <Link to="/history">History</Link>
+      <Link to="/planning">Planning</Link>
+      <Link to="/detail">Detail</Link>
+      <Link to="/record">Record</Link>
     </div>
   );
 }

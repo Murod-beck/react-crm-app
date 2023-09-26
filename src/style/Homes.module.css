@@ -1,4 +1,46 @@
-.homes {
-  width: 75%;
-  color: aliceblue;
+.rows {
+  margin-right: 15px;
+}
+
+.cols {
+  color: #ecd800;
+  font-size: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cols > button {
+  background: #313749;
+  border: 1px solid #aeaeae;
+  color: #ecd800;
+  margin: 10px;
+}
+
+.cols > button:hover {
+  background: #222735;
+  border: 1px solid #ecd800;
+}
+
+.cards {
+  border: 1px solid #aeaeae;
+  background: #313749;
+  color: #ecd800;
+  height: 50vh;
+}
+
+.tables {
+  background: #313749;
+  color: #ecd800;
+  width: 100%;
+}
+
+thead,
+tbody {
+  border-bottom: 1px solid aliceblue;
+  margin: 20px;
+}
+
+th,
+td {
+  padding: 10px;
 }

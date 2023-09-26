@@ -18,7 +18,9 @@ function Header() {
           <Link to={"register"}>Sign Up</Link>
         </Dropdown.Menu>
       </Dropdown>
-      <i className="bi bi-person-circle"></i>
+      <Link to="profile">
+        <i className="bi bi-person-circle"></i>
+      </Link>
     </header>
   );
 }
