@@ -30,11 +30,11 @@ function App() {
         <Route element={<RouterLayout />}>
           <Route path="profile" element={<Profile />} />
           <Route index element={<Home />} />
-          <Route path="catigoris" element={<Categoris />} />
-          <Route path="detail" element={<Detail />} />
           <Route path="history" element={<History />} />
+          <Route path="detail" element={<Detail />} />
           <Route path="planning" element={<Planning />} />
           <Route path="record" element={<Record />} />
+          <Route path="catigoris" element={<Categoris />} />
         </Route>
       </Route>
     )

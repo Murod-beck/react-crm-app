@@ -5,11 +5,10 @@ function Sidebar() {
   return (
     <div className={style.sidebar}>
       <Link to="/">Hisob</Link>
-      <Link to="/catigoris">Categoris</Link>
       <Link to="/history">History</Link>
       <Link to="/planning">Planning</Link>
-      <Link to="/detail">Detail</Link>
       <Link to="/record">Record</Link>
+      <Link to="/catigoris">Categoris</Link>
     </div>
   );
 }

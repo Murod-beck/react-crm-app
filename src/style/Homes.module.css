@@ -1,3 +1,5 @@
+/* Homes */
+
 .rows {
   margin-right: 15px;
 }
@@ -13,7 +15,8 @@
   background: #313749;
   border: 1px solid #aeaeae;
   color: #ecd800;
-  margin: 10px;
+  margin: 5px;
+  padding: 1px 10px;
 }
 
 .cols > button:hover {
@@ -36,11 +39,77 @@
 
 thead,
 tbody {
-  border-bottom: 1px solid aliceblue;
+  border-bottom: 1px solid #aeaeae;
   margin: 20px;
 }
 
 th,
 td {
   padding: 10px;
+}
+
+/* History */
+
+.tables > tbody > tr > td > button {
+  background: #222735;
+  border: 1px solid #aeaeae;
+  color: #ecd800;
+}
+.tables > tbody > tr > td > button:hover {
+  background: #42495f;
+  border: 1px solid #ecd800;
+}
+
+/* Record */
+
+.forms {
+  border: 1px solid #aeaeae;
+  border-radius: 5px;
+  background: #313749;
+  padding: 20px;
+  text-align: center;
+  color: #ecd800;
+  margin: auto;
+}
+
+.forms > .formchek {
+  border-bottom: 1px solid #aeaeae;
+  margin-bottom: 30px;
+}
+
+.forms > div > input {
+  background: border-box;
+}
+
+.forms > button {
+  border: 1px solid #aeaeae;
+  font-size: 18px;
+  padding: 10px;
+  color: #ecd800;
+  margin-bottom: 20px;
+}
+
+.forms > button:hover {
+  border: 1px solid #ecd800;
+  color: #ecd800;
+  background-color: #222735;
+}
+
+.forms > button > i {
+  color: #ecd800;
+  font-size: 18px;
+  padding: 10px;
+}
+
+.forms > button > a {
+  color: #ecd800;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 10px;
+}
+
+/* Categoris */
+
+.forms > h3 {
+  border-bottom: 1px solid #aeaeae;
 }
