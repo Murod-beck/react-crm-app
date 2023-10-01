@@ -4,7 +4,7 @@
   background: #313749;
   padding: 20px;
   text-align: center;
-  color: #aeaeae;
+  color: #ecd800;
   margin: 150px auto;
   max-width: 400px;
 }
@@ -38,4 +38,8 @@
   text-decoration: none;
   font-size: 18px;
   padding: 10px;
+}
+
+.errors > p {
+  color: red;
 }
