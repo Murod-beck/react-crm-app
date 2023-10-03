@@ -1,18 +1,14 @@
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { setUser } from "../store/slices/userSlices";
 import { useState } from "react";
+import { useAuth } from "../hooks/useAuth";
 import style from "../style/Forms.module.css";
 
 function Register() {
-  const navi = useNavigate();
-  const dispatch = useDispatch();
   const [names, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const { signUp } = useAuth();
   const {
     register,
     handleSubmit,
@@ -21,21 +17,8 @@ function Register() {
     mode: "onBlur",
   });
 
-  const submitRegister = (e) => {
-    e.preventDefault();
-    const auth = getAuth();
-    createUserWithEmailAndPassword(auth, email, password)
-      .then(({ user }) => {
-        dispatch(
-          setUser({
-            email: user.email,
-            id: user.uid,
-            token: user.accessToken,
-          })
-        );
-        navi("/");
-      })
-      .catch(console.error);
+  const submitRegister = () => {
+    signUp(email, password);
     setName("");
     setEmail("");
     setPassword("");
@@ -44,7 +27,7 @@ function Register() {
   return (
     <form className={style.forms} onSubmit={handleSubmit(submitRegister)}>
       <button className="btn">
-        <Link to={"/login"}>Sign In</Link>
+        <Link to={"/login?message=logout"}>Sign In</Link>
         <i className="bi bi-box-arrow-in-left"></i>
       </button>
 
@@ -62,7 +45,7 @@ function Register() {
           className="form-control"
         />
         <div className={style.errors}>
-          {errors?.names && <p>{errors?.names?.message || "Error"}</p>}
+          {errors?.names && <p>{errors?.names?.message || "Name"}</p>}
         </div>
       </div>
 
@@ -79,7 +62,7 @@ function Register() {
           className="form-control"
         />
         <div className={style.errors}>
-          {errors?.email && <p>{errors?.email || "Error"}</p>}
+          {errors?.email && <p>{errors?.email?.message || "Email"}</p>}
         </div>
       </div>
 
@@ -97,7 +80,7 @@ function Register() {
           className="form-control"
         />
         <div className={style.errors}>
-          {errors?.password && <p>{errors?.password || "Error"}</p>}
+          {errors?.password && <p>{errors?.password?.message || "Password"}</p>}
         </div>
       </div>
 

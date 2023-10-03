@@ -50,11 +50,13 @@
   background: #201a30;
   max-width: 100px;
   padding-left: 20px;
-}
-
-.headers > .dropdowns > div > a {
+  cursor: pointer;
   text-decoration: none;
   color: #ecd800;
+}
+
+.headers > .dropdowns > div > span:hover {
+  border-bottom: 1px solid #ecd800;
 }
 
 .headers > a {
@@ -89,5 +91,5 @@
 }
 
 .sidebar a:hover {
-  color: #f1f1f1;
+  color: #aeaeae;
 }

@@ -1,10 +1,12 @@
 import { Dropdown } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import { DateTime } from "../hooks/DateTime";
 import style from "../style/Header.module.css";
 import { Link } from "react-router-dom";
 
 function Header() {
   const { dates } = DateTime();
+  const navigates = useNavigate("");
 
   return (
     <header className={style.headers}>
@@ -13,9 +15,19 @@ function Header() {
       <Dropdown className={style.dropdowns}>
         <Dropdown.Toggle>Users</Dropdown.Toggle>
         <Dropdown.Menu>
-          <Link to={"login"}>Login</Link>
+          <span
+            onClick={() => {
+              navigates("/login?message=logout");
+            }}>
+            Login
+          </span>
           <br />
-          <Link to={"register"}>Sign Up</Link>
+          <span
+            onClick={() => {
+              navigates("/register?message=logout");
+            }}>
+            Sign Up
+          </span>
         </Dropdown.Menu>
       </Dropdown>
       <Link to="profile">
