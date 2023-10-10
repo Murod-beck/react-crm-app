@@ -31,6 +31,11 @@
   height: 50vh;
 }
 
+.cards > div > span {
+  border-bottom: 1px solid #aeaeae;
+  padding-bottom: 20px;
+}
+
 .tables {
   background: #313749;
   color: #ecd800;

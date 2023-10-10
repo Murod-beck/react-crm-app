@@ -17,6 +17,8 @@ function Login() {
   });
   const submitLogin = () => {
     signIn(email, password);
+    setEmail("");
+    setPassword("");
   };
 
   return (

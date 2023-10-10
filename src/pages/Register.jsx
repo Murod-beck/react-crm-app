@@ -18,7 +18,7 @@ function Register() {
   });
 
   const submitRegister = () => {
-    signUp(email, password);
+    signUp(email, password, names);
     setName("");
     setEmail("");
     setPassword("");

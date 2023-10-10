@@ -1,10 +1,10 @@
 import { initializeApp, getApp, getApps } from "firebase/app";
+import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_APP_API_KEY,
   authDomain: import.meta.env.VITE_APP_AUTH_DOMAIN,
-  databaseURL:
-    "https://projectoscrm-default-rtdb.europe-west1.firebasedatabase.app",
+  databaseURL: import.meta.env.VITE_APP_PROJECT_DATABASA_URL,
   projectId: import.meta.env.VITE_APP_ROJECT_ID,
   storageBucket: import.meta.env.VITE_APP_STORAGE_BUCKET,
   messagingSenderId: import.meta.env.VITE_APP_MESSAGING_SENDER_ID,
@@ -12,5 +12,5 @@ const firebaseConfig = {
 };
 
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
-
-export default app;
+const database = getDatabase(app);
+export default database;

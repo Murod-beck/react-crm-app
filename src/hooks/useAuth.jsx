@@ -1,5 +1,7 @@
+import { getDatabase, set, ref } from "firebase/database";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setUser, setError } from "../store/userSlices";
 import { toast } from "react-toastify";
 import {
   createUserWithEmailAndPassword,
@@ -9,60 +11,63 @@ import {
 } from "firebase/auth";
 
 function useAuth() {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-  const [user, setUser] = useState({});
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const auth = getAuth();
+  const db = getDatabase();
 
-  const signUp = async (email, password) => {
-    setLoading(true);
+  const signUp = async (email, password, names) => {
     await createUserWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
-        setUser({ email: user.email, password: user.password });
+        dispatch(
+          setUser({
+            email: user.email,
+            uid: user.uid,
+          })
+        );
+        set(ref(db, "users/" + user.uid), {
+          username: names,
+          bill: 10000,
+        });
         navigate("/");
-        setLoading(false);
         toast("Ro'yxatdan o'tdingiz!");
       })
       .catch((error) => {
-        setError(error);
-        toast("Nimadur xato ketdi!");
-      })
-      .finally(() => {
-        setLoading(false);
+        dispatch(setError(error.code));
+        toast(`Nimadur xato ketdi! ${error.code}`);
       });
   };
 
   const signIn = async (email, password) => {
-    setLoading(true);
     await signInWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
-        setUser({ email: user.email, password: user.password });
+        dispatch(
+          setUser({
+            email: user.email,
+            uid: user.uid,
+          })
+        );
         navigate("/");
-        setLoading(false);
         toast("Kirish muvfaqiyatli yakunlandi!");
       })
       .catch((error) => {
-        setError(error);
-        toast("Nimadur xato ketdi!");
-      })
-      .finally(() => {
-        setLoading(false);
+        dispatch(setError(error.code));
+        toast(`Nimadur xato ketdi! ${error.code}`);
       });
   };
 
   const logout = async () => {
     signOut(auth)
       .then(() => {
-        setUser({});
+        dispatch(setUser({}));
       })
       .catch((error) => {
-        const result = error;
-        setError(result.message);
+        dispatch(setError(error.code));
+        toast(`Nimadur xato ketdi! ${error.code}`);
       });
   };
 
-  return { signUp, signIn, logout, user, loading, error };
+  return { signUp, signIn, logout };
 }
 
 export { useAuth };

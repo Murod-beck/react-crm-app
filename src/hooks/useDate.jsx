@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function DateTime() {
+function useDate() {
   const [dates, setDates] = useState("");
 
   const date = () => {
@@ -35,4 +35,4 @@ function DateTime() {
   return { dates };
 }
 
-export { DateTime };
+export { useDate };
