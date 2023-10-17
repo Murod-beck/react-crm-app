@@ -1,15 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import { useDate } from "../hooks/useDate";
 import { Dropdown } from "react-bootstrap";
-import { useAuth } from "../hooks/useAuth";
-import { useInfo } from "../hooks/useInfo";
+import { useInfo } from "../actions/useInfo";
+import { useAuth } from "../actions/useAuth";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import style from "../style/Header.module.css";
 
 function Header() {
-  const { dates } = useDate();
   const { info } = useInfo();
+  const { dates } = useDate();
   const navigates = useNavigate("");
   const { logout } = useAuth();
 
@@ -18,7 +18,7 @@ function Header() {
       <span className={style.logo}>React App</span>
       <span className={style.time}>{dates}</span>
       <Dropdown className={style.dropdowns}>
-        <Dropdown.Toggle>{info.username || "Users"}</Dropdown.Toggle>
+        <Dropdown.Toggle>{(info && info.username) || "User"}</Dropdown.Toggle>
         <Dropdown.Menu>
           <span
             onClick={() => {

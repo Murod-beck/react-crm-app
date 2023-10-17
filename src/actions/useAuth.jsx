@@ -1,7 +1,7 @@
 import { getDatabase, set, ref } from "firebase/database";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setUser, setError } from "../store/userSlices";
+import { setUser } from "../store/slices/slicesUser";
 import { toast } from "react-toastify";
 import {
   createUserWithEmailAndPassword,
@@ -25,7 +25,7 @@ function useAuth() {
             uid: user.uid,
           })
         );
-        set(ref(db, "users/" + user.uid), {
+        set(ref(db, "users/" + user.uid + "/info"), {
           username: names,
           bill: 10000,
         });
@@ -33,7 +33,6 @@ function useAuth() {
         toast("Ro'yxatdan o'tdingiz!");
       })
       .catch((error) => {
-        dispatch(setError(error.code));
         toast(`Nimadur xato ketdi! ${error.code}`);
       });
   };
@@ -51,7 +50,6 @@ function useAuth() {
         toast("Kirish muvfaqiyatli yakunlandi!");
       })
       .catch((error) => {
-        dispatch(setError(error.code));
         toast(`Nimadur xato ketdi! ${error.code}`);
       });
   };
@@ -62,7 +60,6 @@ function useAuth() {
         dispatch(setUser({}));
       })
       .catch((error) => {
-        dispatch(setError(error.code));
         toast(`Nimadur xato ketdi! ${error.code}`);
       });
   };

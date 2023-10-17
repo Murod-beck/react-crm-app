@@ -1,4 +1,4 @@
-import style from "../style/Homes.module.css";
+import style from "../style/Pages.module.css";
 
 function Planning() {
   return (

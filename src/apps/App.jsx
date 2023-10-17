@@ -6,18 +6,18 @@ import {
 } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import "./style/App.css";
-import AuthLayout from "./layout/AuthLayout";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import RouterLayout from "./layout/RouterLayout";
-import Profile from "./component/Profile";
-import Home from "./component/Home";
-import Categoris from "./component/Categoris";
-import Detail from "./component/Detail";
-import History from "./component/History";
-import Planning from "./component/Planning";
-import Record from "./component/Record";
+import "../style/App.css";
+import AuthLayout from "../layout/AuthLayout";
+import Login from "./Login";
+import Register from "./Register";
+import RouterLayout from "../layout/RouterLayout";
+import Profile from "../pages/Profile";
+import Home from "../pages/Home";
+import Categoris from "../pages/Categoris";
+import Detail from "../pages/Detail";
+import History from "../pages/History";
+import Planning from "../pages/Planning";
+import Record from "../pages/Record";
 
 function App() {
   const routers = createBrowserRouter(

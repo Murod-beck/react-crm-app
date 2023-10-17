@@ -118,3 +118,7 @@ td {
 .forms > h3 {
   border-bottom: 1px solid #aeaeae;
 }
+
+.errors > p {
+  color: red;
+}

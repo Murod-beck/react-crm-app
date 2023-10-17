@@ -1,14 +1,13 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
-import { useAuth } from "../hooks/useAuth";
+import { useAuth } from "../actions/useAuth";
 import style from "../style/Forms.module.css";
 
-function Register() {
-  const [names, setName] = useState("");
+function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { signUp } = useAuth();
+  const { signIn } = useAuth();
   const {
     register,
     handleSubmit,
@@ -16,38 +15,18 @@ function Register() {
   } = useForm({
     mode: "onBlur",
   });
-
-  const submitRegister = () => {
-    signUp(email, password, names);
-    setName("");
+  const submitLogin = () => {
+    signIn(email, password);
     setEmail("");
     setPassword("");
   };
 
   return (
-    <form className={style.forms} onSubmit={handleSubmit(submitRegister)}>
+    <form className={style.forms} onSubmit={handleSubmit(submitLogin)}>
       <button className="btn">
-        <Link to={"/login?message=logout"}>Sign In</Link>
+        <Link to={"/register?message=logout"}>Sign Up</Link>
         <i className="bi bi-box-arrow-in-left"></i>
       </button>
-
-      <div className="mb-3">
-        <label className="form-label">Name</label>
-        <input
-          {...register("names", {
-            required: true,
-            minLength: 6,
-            maxLength: 12,
-          })}
-          value={names}
-          onChange={(e) => setName(e.target.value)}
-          type="text"
-          className="form-control"
-        />
-        <div className={style.errors}>
-          {errors?.names && <p>{errors?.names?.message || "Name"}</p>}
-        </div>
-      </div>
 
       <div className="mb-3">
         <label className="form-label">Email</label>
@@ -62,7 +41,7 @@ function Register() {
           className="form-control"
         />
         <div className={style.errors}>
-          {errors?.email && <p>{errors?.email?.message || "Email"}</p>}
+          {errors?.email && <p>{errors?.email?.message || "Error"}</p>}
         </div>
       </div>
 
@@ -72,7 +51,7 @@ function Register() {
           {...register("password", {
             required: true,
             minLength: 6,
-            maxLength: 12,
+            maxLength: 15,
           })}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -80,18 +59,8 @@ function Register() {
           className="form-control"
         />
         <div className={style.errors}>
-          {errors?.password && <p>{errors?.password?.message || "Password"}</p>}
+          {errors?.password && <p>{errors?.password?.message || "Error"}</p>}
         </div>
-      </div>
-
-      <div className="mb-3">
-        <input
-          {...register("Developer", { required: true })}
-          className="form-check-input"
-          type="checkbox"
-          value="Yes"
-        />
-        <label className="form-check-label">Check </label>
       </div>
 
       <button type="submit" className="btn">
@@ -102,4 +71,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default Login;
