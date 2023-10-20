@@ -12,7 +12,7 @@ function useInfo() {
   useEffect(() => {
     try {
       setLoading(true);
-      onValue(ref(db, "users/" + uid + "/info"), (snapshot) => {
+      onValue(ref(db, `users/${uid}/info`), (snapshot) => {
         const respons = (snapshot.val() && snapshot.val()) || "Anonymous";
         setInfo(respons);
         setLoading(false);

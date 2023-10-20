@@ -84,6 +84,12 @@ td {
 
 .forms > div > input {
   background: border-box;
+  color: #ecd800;
+}
+
+.forms > div > select {
+  background: border-box;
+  color: #ecd800;
 }
 
 .forms > button {

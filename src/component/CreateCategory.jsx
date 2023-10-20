@@ -4,11 +4,10 @@ import { useState } from "react";
 import style from "../style/Pages.module.css";
 import { toast } from "react-toastify";
 
-// eslint-disable-next-line react/prop-types
-function CreateCategory({ onSubmit }) {
+function CreateCategory() {
   const { createCategorys } = useCategory();
   const [title, setTitle] = useState("");
-  const [limit, setLimit] = useState(1);
+  const [limit, setLimit] = useState(100);
   const {
     register,
     handleSubmit,
@@ -19,9 +18,8 @@ function CreateCategory({ onSubmit }) {
 
   const createCategory = () => {
     createCategorys(title, limit);
-    onSubmit({ title, limit });
     setTitle("");
-    setLimit("");
+    setLimit(100);
     toast("Category created");
   };
 
