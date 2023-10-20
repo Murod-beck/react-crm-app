@@ -4,7 +4,7 @@ import { useLoader } from "../hooks/useLoader";
 import style from "../style/Pages.module.css";
 
 function Home() {
-  const loader = useLoader();
+  const loader = useLoader(false);
   const { info, loading } = useInfo();
   const { curDate, currency } = useCurrency();
 
