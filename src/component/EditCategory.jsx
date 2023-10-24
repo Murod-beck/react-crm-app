@@ -22,7 +22,6 @@ function EditCategory() {
     setEditTitle(title);
     setEditLimit(limit);
     setId(catId);
-    console.log(title, limit, catId);
   };
 
   const editCategory = () => {

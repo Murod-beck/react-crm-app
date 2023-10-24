@@ -1,4 +1,4 @@
-import { getDatabase, ref, onValue } from "firebase/database";
+import { getDatabase, ref, onValue, update } from "firebase/database";
 import { useEffect, useState } from "react";
 import { useUid } from "../actions/useUid";
 import { toast } from "react-toastify";
@@ -8,6 +8,12 @@ function useInfo() {
   const [loading, setLoading] = useState(true);
   const db = getDatabase();
   const uid = useUid();
+
+  const updateInfo = (bill) => {
+    const updateData = { ...info, ...bill };
+    update(ref(db, `users/${uid}/info`), updateData);
+    console.log(bill);
+  };
 
   useEffect(() => {
     try {
@@ -22,7 +28,7 @@ function useInfo() {
     }
   }, [db, uid]);
 
-  return { info, loading };
+  return { info, loading, updateInfo };
 }
 
 export { useInfo };
