@@ -55,7 +55,7 @@ function useAuth() {
   };
 
   const logout = async () => {
-    signOut(auth)
+    await signOut(auth)
       .then(() => {
         dispatch(setUser({}));
       })

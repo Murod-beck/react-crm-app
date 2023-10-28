@@ -9,10 +9,9 @@ function useInfo() {
   const db = getDatabase();
   const uid = useUid();
 
-  const updateInfo = (bill) => {
+  const updateInfo = async (bill) => {
     const updateData = { ...info, ...bill };
-    update(ref(db, `users/${uid}/info`), updateData);
-    console.log(bill);
+    await update(ref(db, `users/${uid}/info`), updateData);
   };
 
   useEffect(() => {

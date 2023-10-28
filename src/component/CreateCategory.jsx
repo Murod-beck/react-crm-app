@@ -2,7 +2,6 @@ import { useCategory } from "../actions/useCategory";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import style from "../style/Pages.module.css";
-import { toast } from "react-toastify";
 
 function CreateCategory() {
   const { createCategorys } = useCategory();
@@ -20,7 +19,6 @@ function CreateCategory() {
     createCategorys(title, limit);
     setTitle("");
     setLimit(100);
-    toast("Category created");
   };
 
   return (

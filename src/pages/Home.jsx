@@ -1,10 +1,12 @@
 import { useCurrency } from "../actions/useCurrency";
 import { useInfo } from "../actions/useInfo";
+import { useFilters } from "../hooks/useFilters";
 import { useLoader } from "../hooks/useLoader";
 import style from "../style/Pages.module.css";
 
 function Home() {
   const loader = useLoader(false);
+  const { currencys } = useFilters();
   const { info, loading } = useInfo();
   const { curDate, currency } = useCurrency();
 
@@ -30,7 +32,7 @@ function Home() {
               <div className="card-header border-white">You Account</div>
               <div className="card-body">
                 <h5 className="card-title">
-                  RUB: {(info && info.bill) || "0"}
+                  {(info && currencys(info.bill, "RUB")) || "0"}
                 </h5>
                 {currency &&
                   Object.keys(currency).map((cur, i) => {
@@ -68,7 +70,7 @@ function Home() {
                           <tr key={i}>
                             <th scope="row">{i + 1}</th>
                             <td>{curr}</td>
-                            <td>{currency[curr].toFixed(4)}</td>
+                            <td>{currencys(currency[curr].toFixed(4))}</td>
                             <td>{curDate}</td>
                           </tr>
                         );

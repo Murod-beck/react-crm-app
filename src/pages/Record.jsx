@@ -10,8 +10,8 @@ import style from "../style/Pages.module.css";
 function Record() {
   const { info, loading, updateInfo } = useInfo();
   const { categories } = useCategory();
-  const loader = useLoader();
   const { createRecord } = useRecord();
+  const loader = useLoader();
   const [id, setId] = useState("");
   const [type, setType] = useState("");
   const [amount, setAmount] = useState(1);
@@ -35,20 +35,19 @@ function Record() {
     return info.bill >= amount;
   };
 
-  // console.log(info.bill + 22);
-
   const newRecord = () => {
     if (type === "") {
-      toast("tanlang");
+      toast("Select checkbox!");
     } else if (createRecs()) {
       createRecord({
-        id: id,
+        catId: id || categories[0].id,
         type: type,
         amount: amount,
         description: description,
         date: new Date().toJSON(),
       });
-      const bill = type === "income" ? info.bill + amount : info.bill - amount;
+      const bill =
+        type === "income" ? +info.bill + +amount : info.bill - amount;
       updateInfo({ bill });
       setAmount(1);
       setDescription("");
