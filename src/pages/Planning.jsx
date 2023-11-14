@@ -12,8 +12,6 @@ function Planning() {
   const { categories } = useCategory();
   const { records } = useRecord();
 
-  console.log(currencys(5));
-
   const infoPlaning = () => {
     const progresing = categories.map((cat) => {
       const spend = records
@@ -43,22 +41,23 @@ function Planning() {
         <>
           <div className="col">
             <div className={`card ${style.cards}`}>
-              {infoPlaning().map((cat, i) => {
-                return (
-                  <div className="card-body" key={i}>
-                    <div className="card-header">{cat.title}</div>
-                    {cat.spend} is {cat.limit}
-                    <div className="progress">
-                      <div
-                        style={{
-                          width: cat.progressParcent + "%",
-                          background: cat.progressColor,
-                        }}
-                        className={`progress-bar`}></div>
+              {info &&
+                infoPlaning().map((cat, i) => {
+                  return (
+                    <div className={`card-body ${style.cardbody}`} key={i}>
+                      <div className="card-header">{cat.title}</div>
+                      {cat.spend} is {cat.limit}
+                      <div className="progress">
+                        <div
+                          style={{
+                            width: cat.progressParcent + "%",
+                            background: cat.progressColor,
+                          }}
+                          className={`progress-bar`}></div>
+                      </div>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
             </div>
           </div>
         </>

@@ -19,7 +19,7 @@ function useCategory() {
   const createCategorys = async (title, limit) => {
     try {
       const newId = push(ref(db, `users/${uid}/categories/`)).key;
-      await set(ref(db, `users/${uid}/categories/ ${newId}`), {
+      await set(ref(db, `users/${uid}/categories/${newId}`), {
         title,
         limit,
       });

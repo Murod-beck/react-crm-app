@@ -28,7 +28,7 @@
   border: 1px solid #aeaeae;
   background: #313749;
   color: #ecd800;
-  height: 50vh;
+  height: 80vh;
 }
 
 .cards > div > span {
@@ -63,6 +63,12 @@ td {
 .tables > tbody > tr > td > button:hover {
   background: #42495f;
   border: 1px solid #ecd800;
+}
+
+/*Planning */
+
+.cards > .cardbody {
+  padding: 0 10px;
 }
 
 /* Record */
