@@ -31,7 +31,7 @@ function App() {
           <Route path="profile" element={<Profile />} />
           <Route index element={<Home />} />
           <Route path="history" element={<History />} />
-          <Route path="detail" element={<Detail />} />
+          <Route path="detail/:id" element={<Detail />} />
           <Route path="planning" element={<Planning />} />
           <Route path="record" element={<Record />} />
           <Route path="catigoris" element={<Categoris />} />

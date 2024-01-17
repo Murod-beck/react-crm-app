@@ -1,15 +1,20 @@
+import { useNavigate } from "react-router-dom";
 import { useCategory } from "../actions/useCategory";
 import { useRecord } from "../actions/useRecord";
+import { useFilters } from "../hooks/useFilters";
 import { useInfo } from "../actions/useInfo";
 import { useLoader } from "../hooks/useLoader";
 import style from "../style/Pages.module.css";
 
 function History() {
+  const navigates = useNavigate("");
   const loader = useLoader();
   const { loading } = useInfo();
   const { categories } = useCategory();
   const { records } = useRecord();
+  const { currencys } = useFilters();
   const recors = records.map((rec) => {
+    categories.find((c) => c.id === rec.catId);
     return {
       ...rec,
       catName: categories.find((c) => c.id === rec.catId).title,
@@ -37,7 +42,7 @@ function History() {
                     <th scope="col">Date</th>
                     <th scope="col">Category</th>
                     <th scope="col">Type</th>
-                    <th scope="col">Open</th>
+                    <th scope="col">Detail</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -46,14 +51,20 @@ function History() {
                       return (
                         <tr key={res.id}>
                           <th scope="row">{i + 1}</th>
-                          <td>{res.amount}</td>
+                          <td>{currencys(res.amount)}</td>
                           <td>{res.date.slice(0, 10)}</td>
                           <td>{res.catName}</td>
                           <td style={{ color: res.typeClass }}>
                             {res.typeText}
                           </td>
                           <td>
-                            <button className="btn">Open</button>
+                            <button
+                              className="btn"
+                              onClick={() => {
+                                navigates(`/detail/${res.id}`);
+                              }}>
+                              Open
+                            </button>
                           </td>
                         </tr>
                       );
